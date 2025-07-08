@@ -1,11 +1,11 @@
 
 # Contact Tracing Streamlit App
 
-This is a simple Streamlit interface to query contact tracing data from a RabbitMQ middleware system.
+This app allows you to query contacts for a person identifier using a cloud-hosted RabbitMQ server (CloudAMQP).
 
-## Files
-- `gui.py`: Streamlit frontend to input person ID and show contact results.
-- `requirements.txt`: Required Python packages.
+## How to Use
+1. Enter a person identifier (e.g., "Alice")
+2. Click "Submit Query"
+3. The app will return a list of people they have come into contact with, if any.
 
-## Deployment
-Deploy on [https://streamlit.io/cloud](https://streamlit.io/cloud) by linking this GitHub repo and setting `gui.py` as the entry point.
+The app connects to a shared CloudAMQP server securely using Streamlit Secrets.

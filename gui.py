@@ -9,7 +9,8 @@ person_id = st.text_input("Enter Person Identifier to Query")
 
 if st.button("Submit Query"):
     try:
-        connection = pika.BlockingConnection(pika.ConnectionParameters('localhost'))
+        parameters = pika.URLParameters(st.secrets["AMQP_URL"])
+        connection = pika.BlockingConnection(parameters)
         channel = connection.channel()
         channel.queue_declare(queue='query')
         channel.queue_declare(queue='query-response')
