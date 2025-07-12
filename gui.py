@@ -18,22 +18,26 @@ positions = {
 # Display grid
 st.title("Grid View (Sample Static Positions)")
 fig, ax = plt.subplots()
+
 for person, (x, y) in positions.items():
     ax.plot(x, y, 'ro')
     ax.text(x, y + 0.3, person, color='blue', fontsize=12, ha='center')
+
 ax.set_xlim(0, 10)
 ax.set_ylim(0, 10)
+ax.set_xticks(range(11))  # Align grid to integer points
+ax.set_yticks(range(11))
 ax.grid(True)
+
 st.pyplot(fig)
 
-# Contact Query Section
+# Contact Query UI
 st.header("Contact Query")
 person_id = st.text_input("Enter Person Identifier to Query")
 
 if st.button("Submit Query"):
     if person_id.lower() in mock_contacts:
         contacts = mock_contacts[person_id.lower()]
-        st.success(f"Contacts for {person_id}: {contacts}")
+        st.success(f"Contacts for {person_id.capitalize()}: {contacts}")
     else:
-        st.warning("No contact data found.")
-
+        st.warning(f"No data found for identifier: {person_id}")
